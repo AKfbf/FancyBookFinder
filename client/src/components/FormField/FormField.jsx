@@ -4,10 +4,7 @@ import styles from "./FormField.module.scss";
 const FormField = props => {
   const fields = {
     text: (
-      <div
-        className={styles.fieldContainer}
-        key={props.label + new Date().toString}
-      >
+      <div className={styles.fieldContainer}>
         <label htmlFor="">{props.label}</label>
         <input
           type="text"
@@ -16,20 +13,16 @@ const FormField = props => {
       </div>
     ),
     select: (
-      <div
-        className={styles.fieldContainer}
-        key={props.label + new Date().toString}
-      >
+      <div className={styles.fieldContainer}>
         <label htmlFor="">{props.label}</label>
         <select
-          value={props.value}
           onChange={e => props.setter(e.currentTarget.value)}
           defaultValue=""
         >
           {props.options &&
-            props.options.map(option => {
+            props.options.map((option, index) => {
               return (
-                <option value={option.toLowerCase()} id={option}>
+                <option value={option.toLowerCase()} key={option + index}>
                   {option}
                 </option>
               );
@@ -38,10 +31,7 @@ const FormField = props => {
       </div>
     ),
     date: (
-      <div
-        className={styles.fieldContainer}
-        key={props.label + new Date().toString}
-      >
+      <div className={styles.fieldContainer}>
         <label htmlFor="">{props.label}</label>
         <input
           type="date"
@@ -50,10 +40,7 @@ const FormField = props => {
       </div>
     ),
     checkbox: (
-      <div
-        className={styles.fieldContainer}
-        key={props.label + new Date().toString}
-      >
+      <div className={styles.fieldContainer}>
         <label htmlFor="">{props.label}</label>
         <input
           type="checkbox"
@@ -62,7 +49,7 @@ const FormField = props => {
       </div>
     )
   };
-  return (props.type && fields[props.type]) || <div></div>;
+  return <div>{props.type && fields[props.type]}</div> || <div></div>;
 };
 
 export default FormField;

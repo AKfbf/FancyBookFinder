@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Search.module.scss";
 import BooksApi from "../../services/BooksApi";
 import generateQuery from "./QueryGenerator";
@@ -10,6 +10,15 @@ const Search = props => {
   const [language, setLanguage] = useState("");
   const [publisher, setPublisher] = useState("");
   const [advancedSearch, setAdvancedSearch] = useState(false);
+
+  useEffect(() => {
+    fetchAdditionalData(
+      { title, author, language, publisher },
+      6,
+      6 * props.apiCallCounter - 1,
+      props
+    );
+  }, [props.apiCallCounter]);
 
   return (
     <div className={styles.container}>
@@ -51,23 +60,67 @@ const Search = props => {
 
 const renderAdvancedSearch = state => {
   return [
-    <FormField label={"Author"} setter={state.setAuthor} type={"text"} />,
     <FormField
+      key={"Author"}
+      label={"Author"}
+      setter={state.setAuthor}
+      type={"text"}
+    />,
+    <FormField
+      key={"Language"}
       label={"Language"}
       setter={state.setLanguage}
       value={state.language}
       options={["", "PL", "ENG"]}
       type={"select"}
     />,
-    <FormField label={"Publisher"} setter={state.setPublisher} type={"text"} />
+    <FormField
+      key={"Publisher"}
+      label={"Publisher"}
+      setter={state.setPublisher}
+      type={"text"}
+    />
   ];
 };
 
-const searchHandler = async (searchOptions, props, event) => {
+const searchHandler = (searchOptions, props, event) => {
   event.preventDefault();
-  const query = generateQuery(searchOptions);
+  fetchInitialData(searchOptions, 6, 0, props);
+};
+
+const fetchInitialData = async (
+  searchOptions,
+  queryAmount,
+  queryIndex,
+  props
+) => {
+  const query = generateQuery(searchOptions, queryAmount, queryIndex);
   const response = await BooksApi.get(query);
   props.updateBooksData(response.data.items);
+  props.setApiCallCounter(0);
+};
+
+const fetchAdditionalData = async (
+  searchOptions,
+  queryAmount,
+  queryIndex,
+  props
+) => {
+  let query = generateQuery(
+    {
+      title: searchOptions.title,
+      author: searchOptions.author,
+      language: searchOptions.language,
+      publisher: searchOptions.publisher
+    },
+    queryAmount,
+    queryIndex
+  );
+  const response = await BooksApi.get(query);
+  response.data.items &&
+    response.data.items.forEach(item => {
+      props.updateBooksData(arr => [...arr, item]);
+    });
 };
 
 export default Search;

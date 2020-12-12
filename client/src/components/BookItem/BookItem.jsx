@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./BookItem.module.scss";
 import questionMark from "../../assets/images/questionMark.jpg";
 
 const BookItem = props => {
+  const bookItemRef = useRef();
+
+  useEffect(() => {
+    if (bookItemRef.current) {
+      let height = bookItemRef.current.offsetHeight;
+      props.setItemHeight(height);
+    }
+  }, [bookItemRef]);
+
   return (
-    <div key={props.itemData.id}>
+    <div key={props.key}>
       {props.itemData && (
-        <div className={styles.container}>
+        <div className={styles.container} ref={bookItemRef}>
           <img
             className={styles.bookCover}
             src={

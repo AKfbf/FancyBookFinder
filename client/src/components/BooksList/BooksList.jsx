@@ -7,8 +7,14 @@ const BooksList = props => {
     <div className={styles.container}>
       <div className={styles.innerContainer}>
         {props.booksData &&
-          props.booksData.map(data => {
-            return <BookItem itemData={data.volumeInfo} key={data.id} />;
+          props.booksData.map((data, index) => {
+            return (
+              <BookItem
+                itemData={data.volumeInfo}
+                key={index}
+                setItemHeight={props.setItemHeight}
+              />
+            );
           })}
       </div>
     </div>
