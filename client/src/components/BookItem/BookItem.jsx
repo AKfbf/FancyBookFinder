@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./BookItem.module.scss";
 import questionMark from "../../assets/images/questionMark.jpg";
+import shortenText from "../../tools/TextShortener";
 
 const BookItem = props => {
   const bookItemRef = useRef();
@@ -13,9 +14,13 @@ const BookItem = props => {
   }, [bookItemRef]);
 
   return (
-    <div key={props.key}>
+    <div key={props.itemKey}>
       {props.itemData && (
-        <div className={styles.container} ref={bookItemRef}>
+        <div
+          data-testid={"book-item"}
+          className={styles.container}
+          ref={bookItemRef}
+        >
           <img
             className={styles.bookCover}
             src={
@@ -33,16 +38,6 @@ const BookItem = props => {
       )}
     </div>
   );
-};
-
-const shortenText = (text, length) => {
-  let splittedText = text && text.split(/[.|!|?]\s/)[0];
-
-  if (splittedText && splittedText.length > length) {
-    splittedText = splittedText.substr(0, length - 1) + " ...";
-  }
-
-  return (splittedText && splittedText) || "Description not found";
 };
 
 export default BookItem;

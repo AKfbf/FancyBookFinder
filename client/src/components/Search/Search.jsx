@@ -12,12 +12,14 @@ const Search = props => {
   const [advancedSearch, setAdvancedSearch] = useState(false);
 
   useEffect(() => {
-    fetchAdditionalData(
-      { title, author, language, publisher },
-      6,
-      6 * props.apiCallCounter - 1,
-      props
-    );
+    if (props.apiCallCounter > 0) {
+      fetchAdditionalData(
+        { title, author, language, publisher },
+        6,
+        6 * props.apiCallCounter - 1,
+        props
+      );
+    }
   }, [props.apiCallCounter]);
 
   return (
@@ -46,6 +48,7 @@ const Search = props => {
               language
             })}
           <button
+            data-testid={"search-button"}
             onClick={e =>
               searchHandler({ title, author, language, publisher }, props, e)
             }

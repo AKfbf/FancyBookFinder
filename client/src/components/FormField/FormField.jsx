@@ -4,7 +4,7 @@ import styles from "./FormField.module.scss";
 const FormField = props => {
   const fields = {
     text: (
-      <div className={styles.fieldContainer}>
+      <div data-testid={"text-field"} className={styles.fieldContainer}>
         <label htmlFor="">{props.label}</label>
         <input
           type="text"
@@ -13,7 +13,7 @@ const FormField = props => {
       </div>
     ),
     select: (
-      <div className={styles.fieldContainer}>
+      <div data-testid={"select-field"} className={styles.fieldContainer}>
         <label htmlFor="">{props.label}</label>
         <select
           onChange={e => props.setter(e.currentTarget.value)}
@@ -31,7 +31,7 @@ const FormField = props => {
       </div>
     ),
     date: (
-      <div className={styles.fieldContainer}>
+      <div data-testid={"date-field"} className={styles.fieldContainer}>
         <label htmlFor="">{props.label}</label>
         <input
           type="date"
@@ -40,7 +40,7 @@ const FormField = props => {
       </div>
     ),
     checkbox: (
-      <div className={styles.fieldContainer}>
+      <div data-testid={"checkbox-field"} className={styles.fieldContainer}>
         <label htmlFor="">{props.label}</label>
         <input
           type="checkbox"
