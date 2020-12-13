@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/AKfbf.github.io/static/css/main.dd4e0333.chunk.css",
+    "main.js": "/AKfbf.github.io/static/js/main.5ca5c4a2.chunk.js",
+    "main.js.map": "/AKfbf.github.io/static/js/main.5ca5c4a2.chunk.js.map",
+    "runtime-main.js": "/AKfbf.github.io/static/js/runtime-main.053a8453.js",
+    "runtime-main.js.map": "/AKfbf.github.io/static/js/runtime-main.053a8453.js.map",
+    "static/js/2.5a80cd19.chunk.js": "/AKfbf.github.io/static/js/2.5a80cd19.chunk.js",
+    "static/js/2.5a80cd19.chunk.js.map": "/AKfbf.github.io/static/js/2.5a80cd19.chunk.js.map",
+    "static/js/3.6864b685.chunk.js": "/AKfbf.github.io/static/js/3.6864b685.chunk.js",
+    "static/js/3.6864b685.chunk.js.map": "/AKfbf.github.io/static/js/3.6864b685.chunk.js.map",
+    "index.html": "/AKfbf.github.io/index.html",
+    "static/css/main.dd4e0333.chunk.css.map": "/AKfbf.github.io/static/css/main.dd4e0333.chunk.css.map",
+    "static/js/2.5a80cd19.chunk.js.LICENSE.txt": "/AKfbf.github.io/static/js/2.5a80cd19.chunk.js.LICENSE.txt",
+    "static/media/questionMark.125fb040.jpg": "/AKfbf.github.io/static/media/questionMark.125fb040.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.053a8453.js",
+    "static/js/2.5a80cd19.chunk.js",
+    "static/css/main.dd4e0333.chunk.css",
+    "static/js/main.5ca5c4a2.chunk.js"
+  ]
+}
