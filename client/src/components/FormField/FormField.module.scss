@@ -1,0 +1,25 @@
+.fieldContainer {
+  display: flex;
+  justify-content: left;
+  margin: 5px 0 5px 0;
+  width: 430px;
+}
+
+label {
+  width: 120px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+input {
+  width: 170px;
+}
+
+select {
+  width: 178px;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-left: 0;
+}
