@@ -1,5 +1,4 @@
 const generateQuery = (queryOptions, amount, startIndex) => {
-  console.log("query options", queryOptions);
   let query = `q=${queryOptions.title ||
     queryOptions.author ||
     queryOptions.language ||
@@ -11,7 +10,6 @@ const generateQuery = (queryOptions, amount, startIndex) => {
   query += queryOptions.publisher && `+inpublisher:${queryOptions.publisher}`;
 
   query += `&startIndex=${startIndex}&maxResults=${amount}`;
-  console.log("query", query);
   return query;
 };
 

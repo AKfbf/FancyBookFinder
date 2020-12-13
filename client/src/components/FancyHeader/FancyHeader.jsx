@@ -3,11 +3,23 @@ import styles from "./FancyHeader.module.scss";
 
 const FancyHeader = () => {
   return (
-    <h2>
-      <span className={styles.blue}>Find</span>
-      <span className={styles.red}>a</span>
-      <span className={styles.yellow}>Fancy</span>
-      <span className={styles.green}>Book!</span>
+    <h2 data-testid={"fancy-header"}>
+      <span
+        id="fancy-header-part"
+        data-testid={"fancy-header-part"}
+        className={styles.blue}
+      >
+        Find
+      </span>
+      <span data-testid={"fancy-header-part"} className={styles.red}>
+        a
+      </span>
+      <span data-testid={"fancy-header-part"} className={styles.yellow}>
+        Fancy
+      </span>
+      <span data-testid={"fancy-header-part"} className={styles.green}>
+        Book!
+      </span>
     </h2>
   );
 };

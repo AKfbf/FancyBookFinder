@@ -6,16 +6,16 @@ const BooksList = props => {
   return (
     <div className={styles.container}>
       <div className={styles.innerContainer}>
-        {props.booksData &&
+        {(props.booksData &&
           props.booksData.map((data, index) => {
             return (
               <BookItem
                 itemData={data.volumeInfo}
-                key={index}
+                itemKey={index}
                 setItemHeight={props.setItemHeight}
               />
             );
-          })}
+          })) || <p>No records found.</p>}
       </div>
     </div>
   );
